@@ -1,29 +1,29 @@
 
 const startText = document.querySelector("p").textContent;
 const textObj = document.querySelector("p");
-const greenTextObj = document.querySelector(".green");
-const redTextObj = document.querySelector(".red");
+const correctTextObj = document.querySelector(".correct");
+const incorrectTextObj = document.querySelector(".incorrect");
 
 document.addEventListener("keydown",(event) => {
-    if (event.key == startText[(greenTextObj.innerHTML).length]){
-        if (redTextObj.innerHTML == "") {
-            greenTextObj.innerHTML = startText.slice(0,((greenTextObj.innerHTML).length + 1));
-            textObj.innerHTML = startText.slice((greenTextObj.innerHTML).length);
-            textObj.prepend(greenTextObj,redTextObj)
+    if (event.key == startText[(correctTextObj.innerHTML).length]){
+        if (incorrectTextObj.innerHTML == "") {
+            correctTextObj.innerHTML = startText.slice(0,((correctTextObj.innerHTML).length + 1));
+            textObj.innerHTML = startText.slice((correctTextObj.innerHTML).length);
+            textObj.prepend(correctTextObj,incorrectTextObj)
         }     
         }
     else if(!["Shift","Control","Backspace"," ","Alt"].includes(event.key)){
-        if (startText[(greenTextObj.innerHTML).length ] != " ") {
-            redTextObj.innerHTML += startText[(greenTextObj.innerHTML).length+(redTextObj.innerHTML).length];
-            textObj.innerHTML = startText.slice((greenTextObj.innerHTML).length+(redTextObj.innerHTML).length);
-            textObj.prepend(greenTextObj,redTextObj) 
+        if (startText[(correctTextObj.innerHTML).length ] != " ") {
+            incorrectTextObj.innerHTML += startText[(correctTextObj.innerHTML).length+(incorrectTextObj.innerHTML).length];
+            textObj.innerHTML = startText.slice((correctTextObj.innerHTML).length+(incorrectTextObj.innerHTML).length);
+            textObj.prepend(correctTextObj,incorrectTextObj) 
             }       
         }
-    if (redTextObj.innerHTML != ""){
+    if (incorrectTextObj.innerHTML != ""){
         if (event.key == "Backspace"){
-            redTextObj.innerHTML = redTextObj.innerHTML.slice(0,(redTextObj.innerHTML).length-1)
-            textObj.innerHTML = startText.slice((greenTextObj.innerHTML).length+(redTextObj.innerHTML).length);
-            textObj.prepend(greenTextObj,redTextObj) 
+            incorrectTextObj.innerHTML = incorrectTextObj.innerHTML.slice(0,(incorrectTextObj.innerHTML).length-1)
+            textObj.innerHTML = startText.slice((correctTextObj.innerHTML).length+(incorrectTextObj.innerHTML).length);
+            textObj.prepend(correctTextObj,incorrectTextObj) 
         }
     }
 })
